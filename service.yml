@@ -1,0 +1,12 @@
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: springboot-k8s-service # Name of the service
+spec:
+  selector:
+    app: spring-boot-k8s
+  ports:
+    - protocol: "TCP"
+      port: 8080 # The port that the service is running on in the cluster
+      targetPort: 8080 # The port exposed by the service that will be used to access the application running in the cluster
+  type: NodePort # type of the service. NodePort exposes the service on each node's IP at a static port (the NodePort). You can contact the NodePort service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
